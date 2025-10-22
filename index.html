@@ -10,44 +10,50 @@
     content="Hello there, I'm Sophia Williams – an intrepid explorer through the lens, on a relentless quest to capture the world's boundless wonders. Join me in unraveling the extraordinary through my lens as I embark on a visual journey like no other.">
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="dist/assets/favicon.ico" />
-  <link rel="stylesheet" href="dist/output.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Alpine.js -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <!-- Start - Fonts -->
+  
+  <!-- Preconnect to external domains for faster loading -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  
+  <!-- Fonts - with display=swap for better performance -->
   <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet">
-  <!-- End - Fonts -->
-  <!-- Start - Fancybox Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="dist/output.css" />
+  <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Fancybox CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <!-- End - Fancybox Scripts -->
+  
+  <!-- Tailwind CDN - Consider building custom CSS for production -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       content: ["./dist/*.{html,js}"],
       theme: {
-        extend:
-                {
-                  fontFamily: {
-                    'nothingyoucoulddo': ['Nothing You Could Do', 'cursive'],
-                    'signika': ['Signika', 'sans-serif'],
-                  },
-                },
+        extend: {
+          fontFamily: {
+            'nothingyoucoulddo': ['Nothing You Could Do', 'cursive'],
+            'signika': ['Signika', 'sans-serif'],
+          },
+        },
       },
       plugins: [],
     }
   </script>
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 </head>
 
 <body
   class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
   <!-- Navbar -->
   <header class="flex w-full overflow-hidden pt-10 pb-1">
-    <!-- Navbar -->
     <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
       <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
         <div class="mr-4 md:mr-8">
@@ -80,203 +86,373 @@
                 <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
               </a>
             </li>
-            <!-- <li class="group transition duration-300">
-              <a href="dist/about_me.html" class="font-signika text-2xl tap-highlight-transparent">ABOUT ME
-                <span
-                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
-              </a>
-            </li>
-            <li class="group transition duration-300">
-              <a href="dist/contact.html" class="font-signika text-2xl tap-highlight-transparent">CONTACT
-                <span
-                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
-              </a>
-            </li> -->
           </ul>
         </div>
       </div>
     </nav>
   </header>
+
   <!-- Content -->
   <div class="container mx-auto">
     <h1 class="text-4xl pt-10 pb-8 font-bold">PORTFOLIO</h1>
     <section class="text-neutral-700">
       <div class="container w-full">
         <div class="flex flex-wrap w-full">
+          
+          <!-- LEFT COLUMN -->
           <div class="flex w-full md:w-1/2 flex-wrap">
+            
+            <!-- Image 1: Leslie Street Spit with Boat -->
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="./images/Leslie Street Spit with Boat.JPG"
-                  data-fancybox="gallery">
-                  <img alt="a person standing in front of a rock formation"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="./images/Leslie Street Spit with Boat.JPG" />
+                <a href="./images/Leslie Street Spit with Boat.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/leslie-street-spit-400.webp 400w,
+                              ./images/thumbnails/leslie-street-spit-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/leslie-street-spit-800.jpg"
+                      alt="Leslie Street Spit with Boat"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
                 </a>
               </div>
             </div>
+
+            <!-- Image 2: Bluffs Rocks -->
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="./images/Koulie with Bike.JPG"
-                  data-fancybox="gallery">
-                  <img alt="a cat laying on top of a sidewalk next to the ocean"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="./images/Koulie with Bike.JPG" />
+                <a href="./images/Bluffs Rocks.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/bluffs-rocks-400.webp 400w,
+                              ./images/thumbnails/bluffs-rocks-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/bluffs-rocks-800.jpg"
+                      alt="Bluffs Rocks"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
                 </a>
               </div>
             </div>
+
+            <!-- Image 3: Broadview Skyline -->
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="./images/Cataraqui Lake.JPG"
-                  data-fancybox="gallery">
-                  <img alt="a man standing on a beach next to the ocean"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="./images/Cataraqui Lake.JPG" />
+                <a href="./images/Broadview Skyline.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/broadview-skyline-800.webp 800w,
+                              ./images/thumbnails/broadview-skyline-1200.webp 1200w"
+                      sizes="(max-width: 768px) 100vw, 50vw">
+                    <img 
+                      src="./images/thumbnails/broadview-skyline-1200.jpg"
+                      alt="Broadview Skyline"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
                 </a>
               </div>
             </div>
-          </div>
-          <div class="flex w-full md:w-1/2 flex-wrap">
+
+            <!-- Image 4: Broadview Winter -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="./images/Broadview Winter.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/broadview-winter-400.webp 400w,
+                              ./images/thumbnails/broadview-winter-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/broadview-winter-800.jpg"
+                      alt="Broadview Winter"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image 5: Cherry Beach Clouds -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="./images/Cherry Beach Clouds.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/cherry-beach-clouds-400.webp 400w,
+                              ./images/thumbnails/cherry-beach-clouds-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/cherry-beach-clouds-800.jpg"
+                      alt="Cherry Beach Clouds"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image 6: Cherry Beach Sunset -->
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="./images/Camping in Gatineau Park.JPG"
-                  data-fancybox="gallery">
-                  <img alt="a snow covered mountain with trees on the side"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="./images/Camping in Gatineau Park.JPG" />
+                <a href="./images/Cherry Beach Sunset.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/cherry-beach-sunset-800.webp 800w,
+                              ./images/thumbnails/cherry-beach-sunset-1200.webp 1200w"
+                      sizes="(max-width: 768px) 100vw, 50vw">
+                    <img 
+                      src="./images/thumbnails/cherry-beach-sunset-1200.jpg"
+                      alt="Cherry Beach Sunset"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
                 </a>
               </div>
             </div>
+
+            <!-- Image 7: Corktown Sunset -->
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="./images/Horses.JPG"
-                  data-fancybox="gallery">
-                  <img alt="a branch of a plant floating in a body of water"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="./images/Horses.JPG" />
+                <a href="./images/Corktown Sunset.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/corktown-sunset-400.webp 400w,
+                              ./images/thumbnails/corktown-sunset-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/corktown-sunset-800.jpg"
+                      alt="Corktown Sunset"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
                 </a>
               </div>
             </div>
+
+            <!-- Image 8: Distillery Light -->
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="./images/View from Cataraqui Trail.JPG"
-                  data-fancybox="gallery">
-                  <img alt="a blue sky with a lot of red and orange clouds"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="./images/View from Cataraqui Trail.JPG" />
+                <a href="./images/Distillery Light.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/distillery-light-400.webp 400w,
+                              ./images/thumbnails/distillery-light-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/distillery-light-800.jpg"
+                      alt="Distillery Light"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
                 </a>
               </div>
             </div>
+
+            <!-- Image 9: Downtown Toronto -->
+            <div class="w-full p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="./images/Downtown Toronto.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/downtown-toronto-800.webp 800w,
+                              ./images/thumbnails/downtown-toronto-1200.webp 1200w"
+                      sizes="(max-width: 768px) 100vw, 50vw">
+                    <img 
+                      src="./images/thumbnails/downtown-toronto-1200.jpg"
+                      alt="Downtown Toronto"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image 10: Leslieville Trees -->
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="./images/Balls Fall Bridge.JPG"
-                  data-fancybox="gallery">
-                  <img alt="a view of the ocean from the top of a hill"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="./images/Balls Fall Bridge.JPG" />
+                <a href="./images/Leslieville Trees.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/leslieville-trees-400.webp 400w,
+                              ./images/thumbnails/leslieville-trees-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/leslieville-trees-800.jpg"
+                      alt="Leslieville Trees"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
                 </a>
               </div>
             </div>
+
+            <!-- Image 11: Playter Boulevard -->
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="./images/Amsterdam Canal.JPG"
-                  data-fancybox="gallery">
-                  <img alt="a pheasant flying in the sky with its wings spread"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="./images/Amsterdam Canal.JPG" />
+                <a href="./images/Playter Boulevard.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/playter-boulevard-400.webp 400w,
+                              ./images/thumbnails/playter-boulevard-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/playter-boulevard-800.jpg"
+                      alt="Playter Boulevard"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
                 </a>
               </div>
             </div>
+
           </div>
 
-          <!-- <div class="flex w-full md:w-1/2 flex-wrap">
-            <div class="w-full p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="https://images.unsplash.com/photo-1654018869756-d08407972836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2918&q=80"
-                  data-fancybox="gallery">
-                  <img alt="a statue of a man next to a statue of a woman"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="https://images.unsplash.com/photo-1654018869756-d08407972836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2918&q=80" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="https://images.unsplash.com/photo-1677075610184-57d21d023e5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
-                  data-fancybox="gallery">
-                  <img alt="a city street with tall buildings in the background"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="https://images.unsplash.com/photo-1677075610184-57d21d023e5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="https://images.unsplash.com/photo-1558102400-72da9fdbecae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80"
-                  data-fancybox="gallery">
-                  <img alt="25 de abril bridge spanning over Tagus river"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="https://images.unsplash.com/photo-1558102400-72da9fdbecae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="https://images.unsplash.com/photo-1510673825466-302bc330ab95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1744&q=80"
-                  data-fancybox="gallery">
-                  <img alt="a lot of lanterns floating in the air at night"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="https://images.unsplash.com/photo-1510673825466-302bc330ab95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1744&q=80" />
-                </a>
-              </div>
-            </div> -->
-            <!-- <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="https://images.unsplash.com/photo-1675620705848-bcab2d4d98a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                  data-fancybox="gallery">
-                  <img alt="a flock of seaguls flying over a body of water"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="https://images.unsplash.com/photo-1675620705848-bcab2d4d98a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" />
-                </a>
-              </div>
-            </div>
-          </div>
+          <!-- RIGHT COLUMN -->
           <div class="flex w-full md:w-1/2 flex-wrap">
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="https://images.unsplash.com/photo-1642415390616-2ac6727ac550?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                  data-fancybox="gallery">
-                  <img alt="a statue of a headless angel"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="https://images.unsplash.com/photo-1642415390616-2ac6727ac550?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="https://images.unsplash.com/photo-1551346072-8ba2706b0f36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2052&q=80"
-                  data-fancybox="gallery">
-                  <img alt="Monument to the Discoveries viewed from top to bottom"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="https://images.unsplash.com/photo-1551346072-8ba2706b0f36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2052&q=80" />
-                </a>
-              </div>
-            </div>
+            
+            <!-- Image 12: Riverdale Park -->
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="https://images.unsplash.com/photo-1624385690664-38a3af477cd9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                  data-fancybox="gallery">
-                  <img
-                    alt="a group of people walking along the museum of art, architecture and technology of lisbon next to the Tagus river"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="https://images.unsplash.com/photo-1624385690664-38a3af477cd9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" />
+                <a href="./images/Riverdale Park.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/riverdale-park-800.webp 800w,
+                              ./images/thumbnails/riverdale-park-1200.webp 1200w"
+                      sizes="(max-width: 768px) 100vw, 50vw">
+                    <img 
+                      src="./images/thumbnails/riverdale-park-1200.jpg"
+                      alt="Riverdale Park"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
                 </a>
               </div>
-            </div> -->
+            </div>
+
+            <!-- Image 13: Riverdale Sunset -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="./images/Riverdale Sunset.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/riverdale-sunset-400.webp 400w,
+                              ./images/thumbnails/riverdale-sunset-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/riverdale-sunset-800.jpg"
+                      alt="Riverdale Sunset"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image 14: Sakura -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="./images/Sakura.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/sakura-400.webp 400w,
+                              ./images/thumbnails/sakura-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/sakura-800.jpg"
+                      alt="Sakura Cherry Blossoms"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image 15: Sunset Over Beach -->
+            <div class="w-full p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="./images/Sunset Over Beach.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/sunset-over-beach-800.webp 800w,
+                              ./images/thumbnails/sunset-over-beach-1200.webp 1200w"
+                      sizes="(max-width: 768px) 100vw, 50vw">
+                    <img 
+                      src="./images/thumbnails/sunset-over-beach-1200.jpg"
+                      alt="Sunset Over Beach"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image 16: Sunset Tower -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="./images/Sunset Tower.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/sunset-tower-400.webp 400w,
+                              ./images/thumbnails/sunset-tower-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/sunset-tower-800.jpg"
+                      alt="Sunset Tower"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image 17: Telus Autumn -->
+            <div class="w-full md:w-1/2 p-1">
+              <div class="overflow-hidden h-full w-full">
+                <a href="./images/Telus Autumn.JPG" data-fancybox="gallery">
+                  <picture>
+                    <source 
+                      type="image/webp"
+                      srcset="./images/thumbnails/telus-autumn-400.webp 400w,
+                              ./images/thumbnails/telus-autumn-800.webp 800w"
+                      sizes="(max-width: 768px) 50vw, 25vw">
+                    <img 
+                      src="./images/thumbnails/telus-autumn-800.jpg"
+                      alt="Telus Autumn"
+                      loading="lazy"
+                      class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110">
+                  </picture>
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </section>
   </div>
+
   <!-- Footer -->
   <footer>
     <div class="max-w-screen-xl py-16 mx-auto">
@@ -338,9 +514,13 @@
       </p>
     </div>
   </footer>
-  <!-- Script for the LightBox -->
+
+  <!-- Scripts -->
   <script>
-    Fancybox.bind("[data-fancybox]", {});
+    // Initialize Fancybox when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      Fancybox.bind("[data-fancybox]", {});
+    });
   </script>
   <script src="dist/fade_in.js"></script>
   <script src="dist/menu.js"></script>
